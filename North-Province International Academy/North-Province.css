@@ -1,0 +1,145 @@
+body {
+    background: rgb(204,204,204); 
+  }
+  page {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+  }
+  page[size="A4"] {  
+    width: 30cm;
+    height: 39.7cm; 
+  }
+  h1{
+      margin-top: 0px;
+      line-height: 5, 0, 0, 0;
+  }
+
+  h3{
+      text-align: center;
+      line-height: 0.1;
+  }
+
+ p{
+     text-align: center;
+ }
+ .special_text{
+     position: relative;
+     right: 80px;
+     line-height: 0.1;
+ }
+
+/* .header_text{
+  font-size: x-small;
+  text-align: center;
+  margin-top: 20px;
+} */
+img{
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 50px;
+}
+table.student_info{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 80px;
+    width: 650px;
+    height: 60.5px;
+  }
+
+  table.Number{
+      border: 1px solid black;
+      border-collapse: collapse;
+      float: right;
+      position: relative;
+      right: 100px;
+      width: 220px;
+      height: 62px;
+      margin-top: -63px;
+  }
+  table.Grade_Key, th{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: 80px;
+    margin-top: 20px;
+    width: 953px;
+  }
+  /* for table grade key*/
+    th#row1{
+      background-color: darkgray;
+  }
+  tr#row1{
+    background-color: darkgray;
+}
+  
+
+  table.Subjects {
+    width:953px;
+    margin-left: 80px;
+    margin-top: 70px;
+    background-color:#FFFFFF;
+    border-collapse:collapse;border-width:1px;
+    border-color:#000000;
+    border-style:solid;
+    color:#000000;
+    }
+    
+    table.Subjects td, table.Subjects th {
+    border-width:1px;
+    border-color:#000000;
+    border-style:solid;
+    padding:3px;
+    }
+    
+    table.Subjects thead {
+    background-color:#FFFFFF;
+    }
+
+    table.Comments, th{
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: 80px;
+        margin-top: 30px;
+        width: 953px;
+      }
+      table.Class_teacher, th{
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: 80px;
+        margin-top: 20px;
+        width: 953px;
+      }
+
+      table.Number2{
+        border: 1px solid black;
+        border-collapse: collapse;
+        float: left;
+        position: relative;
+        left: 80px;
+        width: 400px;
+        height: 90px;
+        margin-top: 40px;
+    }
+
+    table.Number3{
+        border: 1px solid black;
+        border-collapse: collapse;
+        float: right;
+        position: relative;
+        right: 90px;
+        width: 400px;
+        height: 90px;
+        margin-top: 40px;
+    }
+    @media print {
+        body{
+          width: 30cm;
+          height: 39.7cm;
+          margin: 0 auto;
+          margin-bottom: 0.5cm;
+            /* change the margins as you want them to be. */
+        }
+      }
