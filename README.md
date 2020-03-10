@@ -1,2 +1,2 @@
-# schoola-report-templates
+ schoola-report-templates
 Report Templates

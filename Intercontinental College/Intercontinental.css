@@ -1,0 +1,63 @@
+
+body {
+    /* background: rgb(204,204,204);  */
+  }
+  page {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    /* box-shadow: 0 0 0.5cm rgba(0,0,0,0.5); */
+  }
+  page[size="A4"] {  
+    width: 30cm;
+    height: 39.7cm; 
+  }
+  h1{
+    margin-top: 0px;
+    line-height: 0.9;
+    color: blue;
+}
+
+h3{
+    text-align: center;
+    line-height: 0.1;
+    color: blue;
+    position: relative;
+    left: 80px;
+}
+
+h2{
+   text-align: center;
+   line-height: 0.1;
+   color: blue;
+}
+img{
+    float: left;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 50px;
+}
+
+    table.GeneratedTable {
+    position: relative;
+    left: 0.9;
+    width:90%;
+    background-color:#FFFFFF;
+    border-collapse:collapse;border-width:1px;
+    border-color:#3333FF;
+    border-style:solid;
+    color:#000000;
+    }
+    
+    table.GeneratedTable td, table.GeneratedTable th {
+    border-width:1px;
+    border-color:#3333FF;
+    border-style:solid;
+    padding:3px;
+    }
+    
+    table.GeneratedTable thead {
+    background-color:#FFFFFF;
+    }
+   
