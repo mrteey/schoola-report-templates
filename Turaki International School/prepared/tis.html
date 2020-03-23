@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{school.name}}</title>
 </head>
 <body>
 <!-- <page size="A4" layout="landscape"></page> -->
- <!-- <page size="A4"> -->
+ <page size="A4">
     <header>
         <img src="logo.png" alt="School_placeholder" height="100" width="150">
-        <h1>TURAKI INTERNATIONAL SCHOOLS</h1>
+        <h1>{{school.name}}</h1>
         <p class="header_text">Motto: Success is Ability Plus Training</br>
-        FIRST TERM REPORT, 2019/2020 ACADEMIC SESSION</p>
+        {{session_info.term}}, {{session_info.session}} ACADEMIC SESSION</p>
     </header>
     <hr style="margin-top: 50px; width: 950px;">
     <div class="Student_info">
-        <p>Name: <span>MUSTAPHA MARYAM</span></p>
-        <p>Class: <span>P 4 DAFFODILS</span> <span>&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;No. in Class:  18</span></p>
-        <p>Session: <span>2019/2020</span> <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Term: FIRST</span> <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SEX: F</span></p>
+        <p>Name: <span>{{student.name}}</span></p>
+        <p>Class: <span>{{_class.class_name}}</span> <span>&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;No. in Class:  {{_class.students.count()}}</span></p>
+        <p>Session: <span>{{session_info.session}}</span> <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Term: {{session_info.term}}</span> <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SEX: {{student.gender}}</span></p>
     </div>
     <table class="Attendance">
     <thead>
     <tr>
-    <th>Header Cell 1</th>
-    <th>Header Cell 2</th>
+    <th>ATTENDANCE</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-    <td>Row 1, Cell 1</td>
-    <td>Row 1, Cell 2</td>
+    <td>Days School Opens</td>
+    <td>120</td>
     </tr>
     <tr>
-    <td>Row 2, Cell 1</td>
-    <td>Row 2, Cell 2</td>
+    <td>Time(s) Present</td>
+    <td>120</td>
     </tr>
     <tr>
-    <td>Row 3, Cell 1</td>
-    <td>Row 3, Cell 2</td>
+    <td>Time(s) Absent</td>
+    <td>0</td>
     </tr>
     </tbody>
     </table>
@@ -47,70 +46,85 @@
     <thead>
     <tr>
     <th>SUBJECTS</th>
-    <th>FIRST CA</th>
-    <th>SECOND CA</th>
-    <th>THIRD CA</th>
+    <th>CA1</th>
+    <th>CA2</th>
     <th>EXAM</th>
     <th>TOTAL</th>
+    <th>CA3</th>
+    <th>CA4</th>
+    <th>EXAM</th>
+    <th>TOTAL</th>
+    <th>AVERAGE</th>
     <th>GRADE</th>
     <th>POSITION</th>
-    <th>CLASS AVERAGE</th>
+    <th>C.AVERAGE</th>
     <th>HIGHEST</th>
     <th>LOWEST</th>
     <th>REMARKS</th>
     </tr>
     </thead>
     <tbody>
+    {% for score in report %}
     <tr>
-    <td>Mathematics</td>
-    <td>10</td>
-    <td>20</td>
-    <td>10</td>
-    <td>40</td>
-    <td>80</td>
-    <td>A</td>
-    <td>1</td>
-    <td>75.7</td>
-    <td>90</td>
-    <td>45</td>
-    <td>EXCELLENT</td>
+    <td>{{score.subject_name}}</td>
+    <td>{{score.first}}</td>
+    <td>{{score.second}}</td>
+    <td>{{score.third}}</td>
+    <td>{{score.first}}</td>
+    <td>{{score.second}}</td>
+    <td>{{score.third}}</td>
+    <td>{{score.exam}}</td>
+    <td>{{score.total}}</td>
+    <td>{{score.total}}</td>
+    <td>{{score.grade}}</td>
+    <td>{{score.position}}</td>
+    <td>{{score.average}}</td>
+    <td>{{score.highest}}</td>
+    <td>{{score.lowest}}</td>
+    <td>{{score.grade_description}}</td>
     </tr>
+    {% endfor %}
+    
     </tbody>
     </table>
 
     <table class="Analysis" align="center">
     <tr>
     <td rowspan="2">Analysis</td>
-    <td>Subjects Offered: 20</td>
-    <td>Marks Obtainable: 450</td>
-    <td>Marks Obtained: 650</td>
+    <td>Subjects Offered: </td>
+    <td>Marks Obtainable: </td>
+    <td>Marks Obtained: </td>
     </tr> 
     <tr>
-    <td>Student's Average: 24.7</td>
-    <td>Class Average: 65.7</td>
+    <td>Student's Average: </td>
+    <td>Class Average: </td>
     <td></td>
     </tr>   
     </table>
     
     <table class="Affective_Traits">
         <tr>
-            <td>AFFECTIVE TRAITS</td>
+            <td>{{trait_categories[0]}}</td>
             <td>RATING</td>
         </tr>
+        {% for trait in rated_traits.get(trait_categories[0]) %}
         <tr>
-            <td>PUNCTUALITY</td>
-            <td>B</td>
+            <td>{{trait.get('trait')}}</td>
+            <td>{{trait.get('key')}}</td>
         </tr>
+        {% endfor %}
     </table>
     <table class="Psychomotor">
         <tr>
-            <td>PSYCHOMOTOR</td>
+            <td>{{trait_categories[1]}}</td>
             <td>RATING</td>
         </tr>
+        {% for trait in rated_traits.get(trait_categories[1]) %}
         <tr>
-            <td>HANDWRITING</td>
-            <td>B</td>
+            <td>{{trait.get('trait')}}</td>
+            <td>{{trait.get('key')}}</td>
         </tr>
+        {% endfor %}
     </table>
     <table class="Grade_Categories">
         <tr>
@@ -122,52 +136,63 @@
             <td>SCORES</td>
             <td>GRADE</td>
             </tr>
+            {% for g1, g2 in grades[0:grades|length/2]|zip(grades[grades|length/2]:) %}
             <tr>
-                <td>0-45</td>
-                <td>D</td>
-                <td>46-55</td>
-                <td>C</td>
+                <td>{{g1.min_score}} - {{g1.max_score}}</td>
+                <td>{{g1.grade}}</td>
+                <td>{{g2.min_score}} - {{g2.max_score}}</td>
+                <td>{{g2.grade}}</td>
             </tr>
-            <tr>
-                <td>56-75</td>
-                <td>B</td>
-                <td>76-100</td>
-                <td>A</td>
-            </tr>
+            {% endfor %}
     </table>
 
     <table class="Key_to_Ratings">
         <tr>
             <td>KEY TO RATINGS</td>
         </tr>
+        {% for rating in ratings %}
         <tr>
-            <td>A - Excellence Degree Of Observable Trait</td>
+            <td>{{rating.key}} - {{rating.description}}</td>
         </tr>
-        <tr>
-            <td>B - Good Level Of Observable Trait</td>
-        </tr>
+        {% endfor %}
     </table>
     <table class="Ratings">
         <tr>
-            <td>1</td>
-            <td>2</td>
+            <td>Class Teacher's Name: <br> {{class_comment.teacher}}</td>
+            <td>Class Teacher's Comment: <br> {{class_comment.comment}}</td>
             <td>
                 Director's Signature:
-                <img src="sign.png" alt="signature" width="90">
+
+
+                {{section_comments.signature}}
             </td>
         </tr>
     </table>
     
     <table class="Resumption_Date">
         <tr>
-            <td>16th July, 2019</td>
+            <td>{{session_info.resumption_date}}</td>
         </tr>
     </table>
-<!-- </page> -->
+</page>
 </body>
 </html>
 
 <style>
+    body {
+        background: rgb(204,204,204); 
+      }
+      page {
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+      }
+      page[size="A4"] {  
+        width: 30cm;
+        height: 39.7cm; 
+      }
       h1{
           text-align: center;
           font-size: 20;
@@ -263,5 +288,17 @@
             /* change the margins as you want them to be. */
         }
       }
+    
+    
+      
+      
+      
+      /* table.Attendance thead {
+      background-color:#FFFFFF;
+      } */
+      /* page[size="A4"][layout="landscape"] {
+        width: 29.7cm;
+        height: 21cm;  
+      } */
       
 </style>

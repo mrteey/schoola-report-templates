@@ -6,6 +6,15 @@
   .cover {page-break-after: always;}
 }
 
+.sign{
+  max-width: 10px;
+}
+
+.logo{
+  max-width: 100px;
+  max-height: 100px;
+}
+
 .cover {
   margin: 2% 2% auto 2%;
   overflow-x: hidden;
