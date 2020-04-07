@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{school.name}}</title>
+</head>
+<body>
+<!-- <page size="A4" layout="landscape"></page> -->
+ <page size="A4">
+    <header>
+        <img src="logo.png" alt="School_placeholder" height="100" width="150">
+        <h1>{{school.name}}</h1>
+        <p class="header_text">Motto: Success is Ability Plus Training</br>
+        {{session_info.term}}, {{session_info.session}} ACADEMIC SESSION</p>
+    </header>
+    <hr style="margin-top: 50px; width: 950px;">
+    <div class="Student_info">
+        <p>Name: <span>{{student.name}}</span></p>
+        <p>Class: <span>{{_class.class_name}}</span> <span>&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;No. in Class:  {{_class.students.count()}}</span></p>
+        <p>Session: <span>{{session_info.session}}</span> <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Term: {{session_info.term}}</span> <span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SEX: {{student.gender}}</span></p>
+    </div>
+    <table class="Attendance">
+    <thead>
+    <tr>
+    <th>ATTENDANCE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Days School Opens</td>
+    <td>120</td>
+    </tr>
+    <tr>
+    <td>Time(s) Present</td>
+    <td>120</td>
+    </tr>
+    <tr>
+    <td>Time(s) Absent</td>
+    <td>0</td>
+    </tr>
+    </tbody>
+    </table>
+
+    <table class="Subjects" align="center">
+    <thead>
+    <tr>
+    <th>SUBJECTS</th>
+    <th>CA1</th>
+    <th>CA2</th>
+    <th>EXAM</th>
+    <th>TOTAL</th>
+    <th>CA3</th>
+    <th>CA4</th>
+    <th>EXAM</th>
+    <th>TOTAL</th>
+    <th>AVERAGE</th>
+    <th>GRADE</th>
+    <th>POSITION</th>
+    <th>C.AVERAGE</th>
+    <th>HIGHEST</th>
+    <th>LOWEST</th>
+    <th>REMARKS</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for score in report %}
+    <tr>
+    <td>{{score.subject_name}}</td>
+    <td>{{score.first}}</td>
+    <td>{{score.second}}</td>
+    <td>{{score.third}}</td>
+    <td>{{score.first}}</td>
+    <td>{{score.second}}</td>
+    <td>{{score.third}}</td>
+    <td>{{score.exam}}</td>
+    <td>{{score.total}}</td>
+    <td>{{score.total}}</td>
+    <td>{{score.grade}}</td>
+    <td>{{score.position}}</td>
+    <td>{{score.average}}</td>
+    <td>{{score.highest}}</td>
+    <td>{{score.lowest}}</td>
+    <td>{{score.grade_description}}</td>
+    </tr>
+    {% endfor %}
+    
+    </tbody>
+    </table>
+
+    <table class="Analysis" align="center">
+    <tr>
+    <td rowspan="2">Analysis</td>
+    <td>Subjects Offered: </td>
+    <td>Marks Obtainable: </td>
+    <td>Marks Obtained: </td>
+    </tr> 
+    <tr>
+    <td>Student's Average: </td>
+    <td>Class Average: </td>
+    <td></td>
+    </tr>   
+    </table>
+    
+    <table class="Affective_Traits">
+        <tr>
+            <td>{{trait_categories[0]}}</td>
+            <td>RATING</td>
+        </tr>
+        {% for trait in rated_traits.get(trait_categories[0]) %}
+        <tr>
+            <td>{{trait.get('trait')}}</td>
+            <td>{{trait.get('key')}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table class="Psychomotor">
+        <tr>
+            <td>{{trait_categories[1]}}</td>
+            <td>RATING</td>
+        </tr>
+        {% for trait in rated_traits.get(trait_categories[1]) %}
+        <tr>
+            <td>{{trait.get('trait')}}</td>
+            <td>{{trait.get('key')}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table class="Grade_Categories">
+        <tr>
+            <td colspan="4">Grade Categories</td>
+            </tr> 
+            <tr>
+            <td>SCORES</td>
+            <td>GRADE</td>
+            <td>SCORES</td>
+            <td>GRADE</td>
+            </tr>
+            {% for g1, g2 in grades[0:grades|length/2]|zip(grades[grades|length/2]:) %}
+            <tr>
+                <td>{{g1.min_score}} - {{g1.max_score}}</td>
+                <td>{{g1.grade}}</td>
+                <td>{{g2.min_score}} - {{g2.max_score}}</td>
+                <td>{{g2.grade}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+
+    <table class="Key_to_Ratings">
+        <tr>
+            <td>KEY TO RATINGS</td>
+        </tr>
+        {% for rating in ratings %}
+        <tr>
+            <td>{{rating.key}} - {{rating.description}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table class="Ratings">
+        <tr>
+            <td>Class Teacher's Name: <br> {{class_comment.teacher}}</td>
+            <td>Class Teacher's Comment: <br> {{class_comment.comment}}</td>
+            <td>
+                Director's Signature:
+
+
+                {{section_comments.signature}}
+            </td>
+        </tr>
+    </table>
+    
+    <table class="Resumption_Date">
+        <tr>
+            <td>{{session_info.resumption_date}}</td>
+        </tr>
+    </table>
+</page>
+</body>
+</html>
+
+<style>
+    body {
+        background: rgb(204,204,204); 
+      }
+      page {
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+      }
+      page[size="A4"] {  
+        width: 30cm;
+        height: 39.7cm; 
+      }
+      h1{
+          text-align: center;
+          font-size: 20;
+          left: 7px;
+          margin: 10px;
+      }
+      .header_text{
+        text-align: center;
+      }
+      img{
+          float: left;
+          margin: 10px;
+      }
+      .Student_info{
+          float: left;
+          margin-left: 130px;
+      }
+    
+      table.Attendance, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-top: 5px;
+        margin-left: 21.3cm;
+      }
+    
+      table.Subjects, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          margin-top: 5px;
+          width: 50%;
+          margin-bottom: 5px ;
+      }
+      table.Analysis{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 76.5%;
+        margin-top: 5px;
+      }
+      table.Analysis, td{
+          height: 5px;
+      }
+    
+      table.Affective_Traits{
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-top: 5px;
+        margin-left: 133px;
+        width: 25%;
+      }
+      table.Psychomotor{
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-left: 420px;
+        margin-top: -267px;
+      }
+    
+      table.Grade_Categories{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 32.6%;
+        margin-left: 420px;
+        margin-top: 10px;
+      }
+      table.Key_to_Ratings{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 19%;
+        margin-left: 790px;
+        margin-top: -264px;
+        height: 266px;
+      }
+      table.Ratings{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 76.5%;
+        margin-top: 5px;
+        margin-left: 135px;
+      }
+    
+      table.Resumption_Date{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 76.5%;
+        margin-top: 5px;
+        margin-left: 135px;
+      }
+      @media print {
+        body{
+          width: 30cm;
+          height: 39.7cm;
+          margin: 0 auto;
+          margin-bottom: 0.5cm;
+            /* change the margins as you want them to be. */
+        }
+      }
+    
+    
+      
+      
+      
+      /* table.Attendance thead {
+      background-color:#FFFFFF;
+      } */
+      /* page[size="A4"][layout="landscape"] {
+        width: 29.7cm;
+        height: 21cm;  
+      } */
+      
+</style>
